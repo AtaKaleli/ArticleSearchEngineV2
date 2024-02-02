@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function showAuthors(author){
+
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById(author).innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET","/getauthors?q=" + author, true);
+            xmlhttp.send();
+
+}
+
+function showIssue(issue){
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById(issue).innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET","/getissue?q=" + issue, true);
+            xmlhttp.send();
+
+}
+    </script>
+</head>
+<body>
+<table border="1" border-collapse:collapse;>
+    <tr>
+        <th>ArticleTitle</th>
+        <th>All Authors</th>
+        <th>Issue Info</th>
+    </tr>
+    {% for title in data %}
+        <tr>
+            <td>{{title[0]}}</td>
+            <td><a href="#" onclick="showAuthors(this.id)" id="{{title[0]}}" >See Authors</a></td>
+            <td><a href="#" onclick="showIssue(this.id)" id="{{title[0]}}" >Issue Info</a></td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+<p>Click <a href="/home">here to go to homepage</a></p>
+</body>
+</html>

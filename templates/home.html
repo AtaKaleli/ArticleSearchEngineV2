@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul>
+    {% for issueno in issueNOs%}
+    <li>
+        <a href="/issue/{{issueno[0]}}">{{ issueno[0] }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<p>Click <a href="/home">here to go to homepage</a></p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" border-collapse:collapse;>
+    <tr>
+        <th>Article Title</th>
+        <th>Authors</th>
+    </tr>
+    {% for info in allrecords %}
+    <tr>
+        <td>{{ info[0] }}</td>
+        <td>
+            {% for name in info[1]%}
+            <a href="/author/{{name}}">{{ name }}</a>
+            {%endfor%}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+<p>Click <a href="/home">here to go to homepage</a></p>
+</body>
+</html>
